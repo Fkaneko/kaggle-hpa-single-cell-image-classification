@@ -17,7 +17,7 @@ if on_kaggle_server:
     os.system("pip install ../input/pytorch-timm/timm-0.3.2-py3-none-any.whl")
     os.system("pip install ../input/efficientnet-pytorch/efficientnet_pytorch-0.6.3")
     os.system("pip install ../input/qubvel-segmentation")
-    sys.path.insert(0, "../input/hpa-ws-kaneko/hpa_ws-arcface/hpa_ws-arcface")
+    sys.path.insert(0, "../input/hpa-ws-repo/kaggle-hpa-single-cell-image-classification-main")
 
 import argparse
 import base64
@@ -134,7 +134,7 @@ def create_cell_masks(im: np.ndarray, segmentator) -> tuple:
     # For full cells
     # List[List[np.ndarray(H, W), r], List[np.ndaray(H,W), y], List[np.ndarray(H,W), b]]
     cell_input = [[rgby_image[..., j] for rgby_image in im] for j in [0, 3, 2]]
-    cell_segmentations = segmentator.pred_cells(cell_input)
+    cellsegmentations = segmentator.pred_cells(cell_input)
     batch_n_masks = []
     batch_c_masks = []
     # post-processing
@@ -709,7 +709,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--yaml_path",
-        default="./src/config/kaggle_submission.yaml",
+        default="../input/hpa-ws-repo/kaggle-hpa-single-cell-image-classification-main/src/config/kaggle_submission.yaml",
         type=str,
         help="run config path",
     )
@@ -948,3 +948,4 @@ if __name__ == "__main__":
     if is_debug:
         pred_df = pd.read_csv(sub_path)
         print(pred_df.head())
+_
