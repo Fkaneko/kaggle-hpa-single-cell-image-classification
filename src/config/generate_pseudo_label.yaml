@@ -1,0 +1,14 @@
+stage: "gen_pseudo"
+conf_how: "cam_rate"
+mask_dir: "../input/hpa-mask/"
+skip_bkg_check: False
+use_ext_data: True
+ext_data_mode: 0
+is_debug: False
+
+ckpt_paths:
+    - !!python/tuple [
+      "both",
+        1.0,
+        "./lightning_logs/version_0/checkpoints/last.ckpt"
+        ]

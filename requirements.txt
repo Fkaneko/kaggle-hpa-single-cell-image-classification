@@ -1,0 +1,8 @@
+albumentations
+iterative-stratification
+kornia
+omegaconf
+pandas
+pytorch_lightning==1.2.10
+pyyaml==5.3.1
+segmentation-models-pytorch

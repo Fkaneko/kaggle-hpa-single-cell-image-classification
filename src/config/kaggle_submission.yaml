@@ -1,0 +1,74 @@
+stage: "test"
+conf_how: "cam_rate_mean"
+mask_dir: None
+skip_bkg_check: True
+use_ext_data: False
+ext_data_mode: 0
+is_debug: True
+
+ckpt_paths:
+    - !!python/tuple [
+        "both",  # 44.5
+        0.05,
+        "../input/lightning-weights/rst50_1024_r0_ext1_val1/version_68/checkpoints/epoch-24-step-82924.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 44.5, 45.1x
+        0.12,
+        "../input/lightning-weights/lightning-logs-ext_mode_1_rst50_768_cont/version_61/checkpoints/epoch-9-step-44149.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 42.3 x
+        0.062,
+        "../input/lightning-weights/log_seg_ext_mode_5_res50_768/version_66/checkpoints/epoch-24-step-38349.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 41.3
+        0.072,
+        "../input/lightning-weights/lightning-logs-ext_mode_6_r1_rst50/version_66/checkpoints/epoch-13-step-22217.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 39.4, 43? x
+        0.05,
+        "../input/lightning-weights/lightning-logs-ext_mode_1_r1_sec/version_45/checkpoints/epoch-20-step-27530.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 39.5,  42.3 x
+        0.04,
+        "../input/lightning-weights/log_seg_ext_mode_5_effb3/version_53/checkpoints/epoch-19-step-25579.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 39.0
+        0.066,
+        "../input/lightning-weights/log_seg_ext_mode_1_res200d/version_56/checkpoints/epoch-20-step-40277.ckpt",
+    ]
+    - !!python/tuple [
+        "both",  # 42.9
+        0.04,
+        "../input/lightning-weights/rst50_1280_ext_1zip/version_69/checkpoints/epoch-23-step-90935.ckpt",
+    ]
+    - !!python/tuple [
+                "cam", #47.0 res 50
+                0.05,
+                "../input/hpa-seg-weight/log_seg_ext_mode_1/version_19/checkpoints/epoch-24-step-40949.ckpt"
+    ]
+    - !!python/tuple [
+                "cam", # rst 768
+                0.13,
+                "../input/hpa-seg-weight/rst50_seg_768_ep18_new/version_30/checkpoints/epoch-18-step-83960.ckpt"
+    ]
+    - !!python/tuple [
+                "cam", # f1 best
+                0.22,
+                "../input/hpa-seg-weight/res50_f1_best/version_35/checkpoints/epoch-7-step-13255.ckpt"
+    ]
+    - !!python/tuple [
+                "cam", # rst 512
+                0.05,
+                "../input/hpa-seg-weight/rst50_512_seg_0200/version_40/checkpoints/epoch-20-step-92777.ckpt"
+    ]
+    - !!python/tuple [
+                "cam", # resnext
+                0.05,
+                "../input/hpa-seg-weight/resnext50_512/version_39/checkpoints/epoch-23-step-106151.ckpt"
+    ]
