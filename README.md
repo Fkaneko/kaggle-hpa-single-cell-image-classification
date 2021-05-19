@@ -168,22 +168,28 @@ python run_classification.py \
 ## how to evaluate
 The label to test data is hidden so we could not evaluate a model locally.
 We have to submit our model on a kaggle server.
-I have used `run_cam_infer.py` for evaluation at kaggle.
-After my confirmation I will add a link to my best submission code at kaggle.
-Then you can use the submission code and just replace `ckpt_paths` of `src/config/kaggle_submission.yaml` for your model.
-
-<!-- Here, I made a link to my best submission. -->
-<!-- When evaluating your model, please change `ckpt_paths` of `src/config/kaggle_submission.yaml` -->
+I have used `run_cam_infer.py` for evaluation at kaggle and I shared it [here](https://www.kaggle.com/sai11fkaneko/hpa-inference/notebook).
+If you want to evaluate your trained model, please change `ckpt_paths` of `src/config/kaggle_submission.yaml`.
 
 ## My best model submission
 ### Pipeline
 Please check [my kaggle post](https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239035) for details.
 
 ### Submission code at kaggle
-I'm still working on making my best submission code public.... Please wait for a while...
-
-<!-- This is my kaggle submission and got, mAP 0.518, 15th place on this competition. -->
-
+[This is my kaggle submission](https://www.kaggle.com/sai11fkaneko/hpa-inference/notebook) and got, mAP 0.518, 15th place on this competition.
+If you want to reproduce my training results, the easiest way is getting hyperparamters from [classification models](https://www.kaggle.com/sai11fkaneko/lightning-weights) 
+and [semantic segmentation models](https://www.kaggle.com/sai11fkaneko/hpa-seg-weight). After downloading these datasets you can get all hyperparameters for each model like below and these hyperparamters can be used for reproducing the same training configuration.
+```python
+from src.modeling.pl_model import LitModel, load_trained_pl_model
+checkpoint_path = "lightning-weights/rst50_1024_r0_ext1_val1/version_68/checkpoints/epoch-24-step-82924.ckpt"
+_, args_hparams = load_trained_pl_model(LitModel, checkpoint_path=checkpoint_path, only_load_yaml=True)
+```
+Also each hyperparameter is checked with `tensorborad`. But there are so many parameters, it's hard to check with tensorborad...
+```bash
+# download https://www.kaggle.com/sai11fkaneko/lightning-weights
+tensorborad --logdir ./lightning-weights
+# now starting tensorborad, and `HPARAMS` tab is available
+```
 
 ## License
 #### Code
