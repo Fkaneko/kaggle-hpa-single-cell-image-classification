@@ -163,7 +163,7 @@ def download_ext_data(df: pd.DataFrame, save_dir: str, is_debug: bool = False):
                 save_path = os.path.join(
                     save_dir, f"{os.path.basename(img)}_{color}.png"
                 )
-                download_and_convert_tifgzip_to_png(img_url, save_path, is_jpg=False)
+                download_and_convert_tifgzip_to_png(img_url, save_path, is_jpg=True)
                 # print(f"Downloaded {img_url} as {save_path}")
                 logging_download(
                     csv_path=os.path.join(save_dir, "downloaded.csv"),
@@ -186,7 +186,7 @@ def download_ext_data(df: pd.DataFrame, save_dir: str, is_debug: bool = False):
 def main(args):
     public_hpa_df = pd.read_csv(args.input_csv)
 
-    save_dir = os.path.join(args.save_dir, "publichpa_down_error")
+    save_dir = os.path.join(args.save_dir, "publichpa_download")
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
