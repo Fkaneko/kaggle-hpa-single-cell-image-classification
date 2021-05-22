@@ -4,21 +4,26 @@
 
 
 ## Description
-The 15th place solution training code for Kaggle competition, [Human Protein Atlas - Single Cell Classification](https://www.kaggle.com/c/hpa-single-cell-image-classification)
+The 15th place solution code for a Kaggle competition, [Human Protein Atlas - Single Cell Classification](https://www.kaggle.com/c/hpa-single-cell-image-classification)
 The task of this competition is a weakly instance segmentation for protein class like below.
 ![intro image](./images/hpa_intro.png)
 
-But we have a tool, [HPA-Cell-Segmentation](https://github.com/CellProfiling/HPA-Cell-Segmentation), which segment cell not classify protein. That's why we can only predict class for each mask if we rely on this tool.
+But we have a tool, [HPA-Cell-Segmentation](https://github.com/CellProfiling/HPA-Cell-Segmentation), which segments each cell as instance mask. That's why we can only predict class for each mask if we rely on this tool.
 ![hpa_tool](./images/hpa_segmenatation_tool.png).
 
 
-## approach
-2 stages approach
-
+## Approach and Result
+### Approach
+2 stages approach,
 - 1 st stage: CAM x [SC-CAM](https://arxiv.org/abs/2008.01183) generation
 - 2 nd stage: Semantic Segmentation with the pseudo label from CAM
 ![my_approach](./images/hpa_my_approach.png)
 
+### Result
+* mAP 0.518, 15th place on this competition.
+* [This is my kaggle submission notebook](https://www.kaggle.com/sai11fkaneko/hpa-inference/notebook).
+
+For more details, please check my [slide](./images/kaggle_HPA_Single_Cell_Classification_review_slide.pdf).
 
 ## How to run
 ### Data Preparation
@@ -184,22 +189,26 @@ from src.modeling.pl_model import LitModel, load_trained_pl_model
 checkpoint_path = "lightning-weights/rst50_1024_r0_ext1_val1/version_68/checkpoints/epoch-24-step-82924.ckpt"
 _, args_hparams = load_trained_pl_model(LitModel, checkpoint_path=checkpoint_path, only_load_yaml=True)
 ```
-Also each hyperparameter is checked with `tensorborad`. But there are so many parameters, it's hard to check with tensorborad...
+Also each hyperparameter is checked with `tensorboard`. But there are so many parameters, it's hard to check with tensorboard...
 ```bash
 # download https://www.kaggle.com/sai11fkaneko/lightning-weights
-tensorborad --logdir ./lightning-weights
-# now starting tensorborad, and `HPARAMS` tab is available
+tensorboard --logdir ./lightning-weights
+# now starting tensorboard, and `HPARAMS` tab is available
 ```
+### External Data
+If you reproduce my training result, you need download external data, which is not available as kaggle dataset. So you can use `download_ext_data.py`. But it takes 5 or 6 days.
+
+
 
 ## License
 #### Code
-Apache 2.0
+MIT
 
 #### Dataset and pretrained weights
 At least please check, https://www.proteinatlas.org/about/licence.
 And this kaggle competition, some data may be independent from this site.
 So if you use this data in a serious case, you had better to confirm your case with the competition host.
-And the license of my pretarined weights are supposed to be the same as the dataset license.
+And the license of my pretrained weights are supposed to be the same as the dataset license.
 
 
 ## Reference
