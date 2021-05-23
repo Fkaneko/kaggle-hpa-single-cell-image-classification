@@ -205,9 +205,10 @@ If you reproduce my training result, you need download external data, which is n
 MIT
 
 #### Dataset and pretrained weights
-At least please check, https://www.proteinatlas.org/about/licence.
-And this kaggle competition, some data may be independent from this site.
-So if you use this data in a serious case, you had better to confirm your case with the competition host.
+From https://www.kaggle.com/c/hpa-single-cell-image-classification/rules,
+
+> DATA ACCESS AND USE: COMPETITION AND ACADEMIC/RESEARCH USE ONLY
+
 And the license of my pretrained weights are supposed to be the same as the dataset license.
 
 
